@@ -13,21 +13,24 @@ app.use(bodyParser.urlencoded({
 }));
 app.use('/rooms/:roomid', express.static(path.join(__dirname, '/../client')));
 
-app.use('/house', proxy({
-  target: 'http://18.223.185.89'
-}));
+// app.use('/house', proxy({
+//   target: 'http://18.223.185.89'
+// }));
+// app.use('/rooms/:id/photos', proxy({
+//   target: 'http://54.175.98.175'
+// }));
 app.use('/rooms/:id/photos', proxy({
-  target: 'http://54.175.98.175'
+  target: 'http://localhost:1337'
 }));
-app.use('/api/reviews/rooms/:roomid', proxy({
-  target: 'http://54.202.111.150'
-}));
-app.use('/api/ratings/rooms/:roomid', proxy({
-  target: 'http://54.202.111.150'
-}));
-app.use('/api/rooms/:id', proxy({
-  target: 'http://54.67.99.254'
-}));
+// app.use('/api/reviews/rooms/:roomid', proxy({
+//   target: 'http://54.202.111.150'
+// }));
+// app.use('/api/ratings/rooms/:roomid', proxy({
+//   target: 'http://54.202.111.150'
+// }));
+// app.use('/api/rooms/:id', proxy({
+//   target: 'http://54.67.99.254'
+// }));
 
 
 app.listen(port, () => {
