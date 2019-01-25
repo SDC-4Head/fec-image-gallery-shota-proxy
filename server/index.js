@@ -1,3 +1,4 @@
+require('newrelic');
 const express = require("express");
 const bodyParser = require("body-parser");
 const path = require("path");
@@ -14,7 +15,7 @@ app.use(
   })
 );
 app.use("/rooms/:roomid", express.static(path.join(__dirname, "/../client")));
-
+app.use(express.static('public'));
 // app.use('/house', proxy({
 //   target: 'http://18.223.185.89'
 // }));
@@ -24,7 +25,7 @@ app.use("/rooms/:roomid", express.static(path.join(__dirname, "/../client")));
 app.use(
   "/rooms/:id/photos",
   proxy({
-    target: "ec2-54-202-227-148.us-west-2.compute.amazonaws.com:3000"
+    target: "http://ec2-54-202-227-148.us-west-2.compute.amazonaws.com:3000"
   })
 );
 // app.use('/api/reviews/rooms/:roomid', proxy({
