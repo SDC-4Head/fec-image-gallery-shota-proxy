@@ -24,7 +24,7 @@ app.use("/rooms/:roomid", express.static(path.join(__dirname, "/../client")));
 app.use(
   "/rooms/:id/photos",
   proxy({
-    target: "http://ec2-54-185-54-14.us-west-2.compute.amazonaws.com:3000"
+    target: "ec2-54-202-227-148.us-west-2.compute.amazonaws.com:3000"
   })
 );
 // app.use('/api/reviews/rooms/:roomid', proxy({
@@ -33,9 +33,9 @@ app.use(
 // app.use('/api/ratings/rooms/:roomid', proxy({
 //   target: 'http://54.202.111.150'
 // }));
-// app.use('/api/rooms/:id', proxy({
-//   target: 'http://54.67.99.254'
-// }));
+app.use('/api/rooms/:id', proxy({
+  target: "ec2-54-202-227-148.us-west-2.compute.amazonaws.com:3000"
+}));
 
 app.listen(port, () => {
   console.log("server running");
